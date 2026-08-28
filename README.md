@@ -79,13 +79,3 @@ Padrão de escrita adotado: modos de uso (guiado / despejo de contexto / melhor
 palpite), escada de decisão com uma pergunta por turno, right-sizing Light / Standard /
 Heavy, e armadilhas conhecidas sempre com **consequência e correção**.
 
-## Sincronização
-
-O conteúdo deste repositório (exceto este README e a LICENSE) é sincronizado
-automaticamente a partir de `fisher-brain/30-skills-e-prompts` via GitHub Action:
-todo push em `main` naquele repositório que altere a pasta abre um Pull Request aqui.
-
-**Esse PR só pode ser mesclado com aprovação de `@cgamboa-fisher` ou `@vinicatto`**
-(regra de proteção de branch + `CODEOWNERS`). Não edite os skills diretamente neste
-repositório — a próxima sincronização sobrescreveria a mudança. Edite em
-`fisher-brain/30-skills-e-prompts` e abra PR lá.
