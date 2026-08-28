@@ -1,0 +1,78 @@
+name: Propose sync to FisherVB/fisher-brain
+
+# Skills is public and is the front door for external contributions — outside
+# collaborators can't open a PR against the private fisher-brain repo. Once a
+# contribution is merged here, this proposes the same change to fisher-brain
+# as a fresh PR: being accepted in Skills does not auto-land it in the
+# private second brain, it still needs review there too.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.github/**'
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Skills
+        uses: actions/checkout@v4
+        with:
+          path: skills-repo
+
+      - name: Checkout fisher-brain
+        uses: actions/checkout@v4
+        with:
+          repository: FisherVB/fisher-brain
+          token: ${{ secrets.FISHER_BRAIN_SYNC_PAT }}
+          path: fisher-brain
+
+      - name: Mirror into 30-skills-e-prompts
+        run: |
+          DEST=fisher-brain/30-skills-e-prompts
+          MANIFEST=skills-repo/.github/fisher-brain-sync-manifest.txt
+          OLD_ITEMS=$(cat "$MANIFEST" 2>/dev/null || true)
+
+          NEW_ITEMS=$(cd skills-repo && find . -mindepth 1 -maxdepth 1 \
+            ! -name 'README.md' ! -name 'LICENSE' ! -name '.github' ! -name '.git' \
+            -printf '%P\n' | sort)
+
+          # Items removed from Skills that were previously jointly tracked.
+          comm -23 <(echo "$OLD_ITEMS") <(echo "$NEW_ITEMS") | while read -r item; do
+            [ -n "$item" ] && rm -rf "$DEST/$item"
+          done
+
+          while read -r item; do
+            [ -z "$item" ] && continue
+            rm -rf "$DEST/$item"
+            cp -R "skills-repo/$item" "$DEST/$item"
+          done <<< "$NEW_ITEMS"
+
+      - name: Open proposal PR (requires approval in fisher-brain too)
+        env:
+          GH_TOKEN: ${{ secrets.FISHER_BRAIN_SYNC_PAT }}
+        run: |
+          cd fisher-brain
+          git config user.name "skills-sync[bot]"
+          git config user.email "actions@users.noreply.github.com"
+
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No changes to propose."
+            exit 0
+          fi
+
+          BRANCH="sync/skills-${GITHUB_SHA::12}"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "Propose sync from Skills@${GITHUB_SHA::12}"
+          git push origin "$BRANCH"
+
+          gh pr create --repo FisherVB/fisher-brain \
+            --title "Propose sync from Skills (${GITHUB_SHA::12})" \
+            --body "Conteúdo aceito e mesclado em [FisherVB/Skills](https://github.com/FisherVB/Skills/commit/${GITHUB_SHA}), incluindo contribuições externas.
+
+Ser aceito no Skills **não** aplica a mudança aqui automaticamente — esta é uma proposta de inclusão no second brain e ainda precisa de aprovação de @cgamboa-fisher ou @vinicatto." \
+            --base main --head "$BRANCH"

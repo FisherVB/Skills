@@ -79,13 +79,27 @@ Padrão de escrita adotado: modos de uso (guiado / despejo de contexto / melhor
 palpite), escada de decisão com uma pergunta por turno, right-sizing Light / Standard /
 Heavy, e armadilhas conhecidas sempre com **consequência e correção**.
 
-## Sincronização
+## Contribuindo
 
-O conteúdo deste repositório (exceto este README e a LICENSE) é sincronizado
-automaticamente a partir de `fisher-brain/30-skills-e-prompts` via GitHub Action:
-todo push em `main` naquele repositório que altere a pasta abre um Pull Request aqui.
+Este repositório é a porta de entrada para contribuições externas — quem não é
+colaborador da Fisher não tem acesso ao `fisher-brain`, que é privado. Abra um PR
+aqui normalmente.
 
-**Esse PR só pode ser mesclado com aprovação de `@cgamboa-fisher` ou `@vinicatto`**
-(regra de proteção de branch + `CODEOWNERS`). Não edite os skills diretamente neste
-repositório — a próxima sincronização sobrescreveria a mudança. Edite em
-`fisher-brain/30-skills-e-prompts` e abra PR lá.
+**Todo PR só pode ser mesclado com aprovação de `@cgamboa-fisher` ou `@vinicatto`**
+(regra de proteção de branch + `CODEOWNERS`).
+
+## Sincronização com fisher-brain
+
+A sincronização com `fisher-brain/30-skills-e-prompts` (o second brain privado da
+Fisher) é bidirecional, e cada lado sempre passa por PR + aprovação de
+`@cgamboa-fisher` ou `@vinicatto` no repositório de destino — nunca há merge direto:
+
+- **fisher-brain → Skills:** todo push em `main` do fisher-brain que altere a pasta
+  abre um PR aqui, mantendo este repositório espelhado.
+- **Skills → fisher-brain:** todo PR mesclado aqui (incluindo contribuições externas)
+  abre um PR de inclusão no fisher-brain. Ser aceito aqui **não** aplica a mudança lá
+  automaticamente — é uma proposta, ainda sujeita a aprovação no second brain privado.
+
+Um arquivo `.github/fisher-brain-sync-manifest.txt` rastreia quais pastas de topo são
+geridas por essa sincronização, para que uma contribuição nova aqui nunca seja apagada
+antes de ser replicada para o fisher-brain.
