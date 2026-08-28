@@ -1,0 +1,4 @@
+anti-slop-ptbr
+build-plugin.py
+eval-design
+process-selection-advisor
