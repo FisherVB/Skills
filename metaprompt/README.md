@@ -58,6 +58,9 @@ Sem argumento (`/metaprompt` sozinho), a primeira pergunta é qual tarefa o prom
 | Arquivo | Para quê |
 |---|---|
 | `SKILL.md` | A skill. Fonte de verdade do comportamento |
+| `commands/metaprompt.md` | O comando `/metaprompt` do plugin |
+| `plugin.json` | Manifesto do plugin (versão, autor, keywords) |
+| `build-packages.py` | Gera os dois pacotes abaixo a partir dos arquivos acima |
 | `metaprompt.skill` | Pacote só da skill, para Claude.ai / Cowork |
 | `metaprompt-plugin.zip` | Plugin completo: skill + comando `/metaprompt` + manifesto |
 
@@ -71,4 +74,12 @@ ln -s <caminho-local-deste-repo>/metaprompt ~/.claude/skills/metaprompt
 
 **Claude.ai / Cowork**: abra o `metaprompt.skill` e clique em **Save skill**. Não há comando de barra nesse modo; a skill dispara por linguagem natural ("cria um prompt para...", "melhora esse prompt").
 
-> Os pacotes `.skill` e `.zip` são snapshots. Ao mudar o `SKILL.md`, gere os pacotes de novo para que quem instala receba a versão nova.
+### Atualizar os pacotes
+
+Os pacotes `.skill` e `.zip` são snapshots: quem já instalou não recebe mudanças sozinho. Depois de mudar `SKILL.md`, `README.md`, `commands/` ou `plugin.json`, suba a `version` no `plugin.json` e gere os pacotes de novo:
+
+```bash
+python3 metaprompt/build-packages.py
+```
+
+Faça commit dos pacotes junto com a mudança, para que o que está no GitHub bata com o código-fonte.

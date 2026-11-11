@@ -1,0 +1,16 @@
+{
+  "name": "metaprompt",
+  "version": "1.0.1",
+  "description": "Agente de engenharia de prompt e de contexto: entrevista o usuário uma pergunta por vez e entrega um prompt final em Markdown com Persona, Objetivo, Contexto e Saída Esperada. Inclui o comando /metaprompt.",
+  "author": {
+    "name": "Carlos Gamboa"
+  },
+  "keywords": [
+    "prompt-engineering",
+    "context-engineering",
+    "metaprompt",
+    "pt-br"
+  ],
+  "commands": "./commands",
+  "skills": "./skills"
+}
