@@ -36,6 +36,7 @@ Gaps mapeados para desenvolvimento futuro, na sequência em que fazem sentido:
 | Skill | Papel |
 |---|---|
 | [`anti-slop-ptbr`](anti-slop-ptbr/) | Tira as marcas de escrita gerada por IA de texto em PT-BR. Deny-lists de vocabulário e pontuação, tells estruturais, teste de densidade informacional, score editorial |
+| [`metaprompt`](metaprompt/) | Transforma um pedido vago em prompt pronto para uso. Entrevista uma pergunta por vez e entrega Persona, Objetivo, Contexto e Saída Esperada. Inclui o comando `/metaprompt` |
 
 ## Instalação local
 
