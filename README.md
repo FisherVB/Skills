@@ -38,6 +38,12 @@ Gaps mapeados para desenvolvimento futuro, na sequência em que fazem sentido:
 | [`anti-slop-ptbr`](anti-slop-ptbr/) | Tira as marcas de escrita gerada por IA de texto em PT-BR. Deny-lists de vocabulário e pontuação, tells estruturais, teste de densidade informacional, score editorial |
 | [`metaprompt`](metaprompt/) | Transforma um pedido vago em prompt pronto para uso. Entrevista uma pergunta por vez e entrega Persona, Objetivo, Contexto e Saída Esperada. Inclui o comando `/metaprompt` |
 
+## Naming
+
+| Skill | Papel |
+|---|---|
+| [`naming-agent`](naming-agent/) | Nomeia marcas, produtos e empresas rodando o workshop em 11 passos (Zoo Method), uma pergunta por vez: restrições, Wordbank, 12 territórios de segmentação, Matriz de Decisão 0–3, checagem de domínio (RDAP, inclui `.com.br`) e votação. Scripts de disponibilidade e de matriz, sem dependências |
+
 ## Instalação local
 
 Os skills ficam versionados aqui e são instalados por symlink, para que `git pull`
