@@ -42,7 +42,7 @@ Gaps mapeados para desenvolvimento futuro, na sequência em que fazem sentido:
 
 | Skill | Papel |
 |---|---|
-| [`naming`](naming/) | Nomeia marcas, produtos e empresas rodando o workshop em 11 passos (Zoo Method), uma pergunta por vez: restrições, Wordbank, 12 territórios de segmentação, Matriz de Decisão 0–3, checagem de domínio (RDAP, inclui `.com.br`) e votação. Scripts de disponibilidade e de matriz, sem dependências |
+| [`naming-agent`](naming-agent/) | Nomeia marcas, produtos e empresas rodando o workshop em 11 passos (Zoo Method), uma pergunta por vez: restrições, Wordbank, 12 territórios de segmentação, Matriz de Decisão 0–3, checagem de domínio (RDAP, inclui `.com.br`) e votação. Scripts de disponibilidade e de matriz, sem dependências |
 
 ## Instalação local
 

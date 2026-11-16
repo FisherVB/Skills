@@ -1,4 +1,4 @@
-# naming
+# naming-agent
 
 Skill de **naming** da Fisher: nomeia marcas, produtos, empresas, startups,
 features e campanhas rodando um **workshop estruturado em 11 passos** (o "Zoo
@@ -36,7 +36,7 @@ Dispara mesmo sem a palavra "naming". Nomeia em português e inglês.
 ## Estrutura
 
 ```
-naming/
+naming-agent/
 ├── SKILL.md                       # o workshop em 11 passos
 ├── plugin.json                    # metadados de release (version, keywords)
 ├── references/
@@ -52,13 +52,13 @@ naming/
 Como as outras skills do repo — symlink pra `git pull` manter atualizado:
 
 ```bash
-ln -s <caminho-deste-repo>/naming ~/.claude/skills/naming
+ln -s <caminho-deste-repo>/naming-agent ~/.claude/skills/naming-agent
 ```
 
 Pra usar no app do Claude / sessões na nuvem, gere o pacote:
 
 ```bash
-python3 build-plugin.py naming
+python3 build-plugin.py naming-agent
 ```
 
 ## Os scripts, soltos

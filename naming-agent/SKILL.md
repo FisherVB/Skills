@@ -1,5 +1,5 @@
 ---
-name: naming
+name: naming-agent
 description: >-
   Nomeia marcas, produtos, empresas, startups, features e campanhas rodando um
   workshop de naming estruturado (o "Zoo Method", em 11 passos): restrições,
